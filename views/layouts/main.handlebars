@@ -10,12 +10,8 @@
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to the Tech Blog</h1>
-  </header>
   <nav>
     <a href="/">Home</a>
-    
         {{#if logged_in}}
         <a href="/blog">blog</a> |
         <button class="no-button" id="logout">logout</button>
@@ -23,6 +19,9 @@
         <a href="/login">login</a>
         {{/if}}
   </nav>
+    <header>
+    <h1>Welcome to the Tech Blog!</h1>
+  </header>
   <main>
     <aside>
       <h2>Enjoy the technology insights</h2>
