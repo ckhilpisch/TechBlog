@@ -1,5 +1,47 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User } = require('../../models');
+
+router.get('/:id', async (req, res) => {
+  try {
+    const blogData = await Blog.findOne({
+      where: {
+        id: req.params.id,
+      },
+      attributes: ['id', 'name', 'content', 'date_created'],
+    include: [
+      {model: User, attributes: ['name']},
+      {model: Comment, attributes: ['content', 'user_id'], 
+    include: {
+      model: User, attributes: ['name'],
+      }
+    }
+    ]
+  })
+if (!blogData) {
+  res.status(404).json({
+    message: "This blog does not exist"
+  });
+  return;
+}
+res.status(200).json(blogData);
+} catch (err) {
+  res.status(500).json(err);
+}
+});
+
+router.post('/:id', async (req, res) => {
+  const userID = req.session.user_id
+  try {
+    const newComment = await Comment.create({
+      text: req.body.content,
+      blog_id: req.body.blog_id,
+      user_id: req.body.user_id,
+    });
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
@@ -30,7 +72,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(projectData);
+    res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
   }
