@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -39,6 +41,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.name =userData.name;
       
       res.json({ user: userData, message: 'Logged in, my friend!' });
     });
@@ -55,6 +58,23 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+router.get("/user_data", (req, res) => {
+  console.log(req.session);
+  if (!req.session) {
+  
+    // The user is not logged in, send back an empty object
+    res.json(null);
+  } else {
+    
+    // Otherwise send back the user's email and id
+    // Sending back a password, even a hashed password, isn't a good idea
+    res.json({
+      id: req.session.user_id,
+      name: req.session.name
+    });
   }
 });
 

@@ -18,8 +18,9 @@ const hbs = exphbs.create({ helpers });
 // Configure session object with the session store
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {secure: false},
   resave: false,
+  
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize

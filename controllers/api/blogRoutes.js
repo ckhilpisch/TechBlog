@@ -39,9 +39,14 @@ router.post('/:id', async (req, res) => {
     });
     res.status(200).json(newComment);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err)
   }
-});
+})
+
+
+
+
+
 
 router.post('/', async (req, res) => {
   try {
