@@ -64,13 +64,8 @@ router.post('/logout', (req, res) => {
 router.get("/user_data", (req, res) => {
   console.log(req.session);
   if (!req.session) {
-  
-    // The user is not logged in, send back an empty object
     res.json(null);
   } else {
-    
-    // Otherwise send back the user's email and id
-    // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       id: req.session.user_id,
       name: req.session.name
