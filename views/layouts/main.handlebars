@@ -11,26 +11,17 @@
 
 <body>
   <nav>
-    <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
-        {{#if logged_in}}
-        <a href="/blog">blog</a>
-        <button class="no-button" id="logout">Logout</button>
-        {{else}}
-        <a href="/login"></a>
-        <button class="no-button" id="login">Login</button>
-        {{/if}}
+    <a href="/"></a><button class="no-button" id="home">Home</button>
+    {{#if logged_in}}
+    <a href="/dashboard"></a><button class="no-button" id="dashboard">Dashboard</button>
+    <a href="/logout"></a><button class="no-button" id="logout">Logout</button>
+    {{else}}
+    <a href="/login"></a><button class="no-button" id="login">Login</button>
+    {{/if}}
   </nav>
-    <header>
-    <h1>Welcome to the Tech Blog!</h1>
-  </header>
-  <main>
-    <aside>
-      <h2>Enjoy the technology insights</h2>
-    </aside>
-    <div>
-      {{{body}}}
-    </div>
+  <div>
+    {{{body}}}
+  </div>
   </main>
   <footer>
 
