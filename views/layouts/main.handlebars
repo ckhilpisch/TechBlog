@@ -12,11 +12,13 @@
 <body>
   <nav>
     <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
         {{#if logged_in}}
-        <a href="/blog">blog</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/blog">blog</a>
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login"></a>
+        <button class="no-button" id="login">Login</button>
         {{/if}}
   </nav>
     <header>
@@ -26,7 +28,7 @@
     <aside>
       <h2>Enjoy the technology insights</h2>
     </aside>
-    <div class="blog">
+    <div>
       {{{body}}}
     </div>
   </main>
