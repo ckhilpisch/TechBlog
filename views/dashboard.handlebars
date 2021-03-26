@@ -4,22 +4,31 @@
   </div>
 </div>
 
-  {{#if blogs.length}}
-  <div class="col-md-6 blog-list">
-    <h3>My Blogs:</h3>
+{{#if blogs.length}}
+<div class="col-md-6 blog-list">
+  <h3>{{name}}'s Blogs:</h3>
+  <h5>**Click on a blog's title to go to the blog's page and read comments left by other users!**</h5>
 
-    {{#each blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id={{blog.id}}>DELETE</button>
-      </div>
+  {{#each blogs as |blog|}}
+  <div class="row mb-2">
+    <div class="col-md-4">
+      <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
     </div>
-    {{/each}}
+    <div class="col-md-8">
+      <p> {{blog.content}}
+
+      </p>
+    </div>
   </div>
-  {{/if}}
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-sm btn-danger" data-id={{blog.id}}>DELETE</button>
+    </div>
+  </div>
+</div>
+{{/each}}
+</div>
+{{/if}}
 </div>
 <div class="row mt-4">
   <div class="col-md-6">
@@ -40,4 +49,4 @@
     </form>
   </div>
 
-<script src="./js/blog.js"></script>
+  <script src="./js/blog.js"></script>

@@ -1,6 +1,5 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-  
     const name = document.querySelector('#blog-name').value.trim();
     const content = document.querySelector('#blog-content').value.trim();
   
@@ -15,6 +14,9 @@ const newFormHandler = async (event) => {
   
       if (response.ok) {
         document.location.append('/dashboard');
+        window.location.reload();
+
+
       } else {
         alert('Failed to create project');
       }
@@ -36,10 +38,11 @@ const newFormHandler = async (event) => {
       }
     }
   };
-  
+
+
   document
     .querySelector('.new-blog-form')
-    .addEventListener('submit', newFormHandler);
+    .addEventListener('click', newFormHandler);
   
   document
     .querySelector('.blog-list')
