@@ -11,12 +11,12 @@
 
 <body>
   <nav>
-    <a href="/"></a><button class="no-button" id="home">Home</button>
+    <a href="/">Home</a>
     {{#if logged_in}}
-    <a href="/dashboard"></a><button class="no-button" id="dashboard">Dashboard</button>
-    <a href="/logout"></a><button class="no-button" id="logout">Logout</button>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Logout</a>
     {{else}}
-    <a href="/login"></a><button class="no-button" id="login">Login</button>
+    <a href="/login">Login</a>
     {{/if}}
   </nav>
   <div>
