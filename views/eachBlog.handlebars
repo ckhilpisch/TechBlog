@@ -1,11 +1,14 @@
 <div class="viewBlog">
     <div class="viewHeader">
-    <h2 >{{blog.title}}</h2>
-    <h4>By: {{blog.user.name}}</h4>
-    <h5>Created On: {{format_date blog.date_created}}</h5>
+    <h2 >{{blog.name}}</h2>
+    <h4>By: {{user.name}}</h4>
+   
     </div>
     <p>{{blog.content}}</p>
-    <div class="form">
+    <p>created on: {{blog.date_created}}</p>
+    
+    
+    <div class="form" id="comment-form">
         <label class="label userCommentLabel" for="userName">Leave a Comment: </label>
     </div>
     <div class="form">
