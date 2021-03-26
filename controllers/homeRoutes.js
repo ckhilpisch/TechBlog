@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { Blog, User } = require("../models");
+const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get(["/","/home"], async (req, res) => {
   try {
     const blogData = await Blog.findAll({
       include: [
@@ -31,6 +31,9 @@ router.get("/blog/:id", withAuth, async (req, res) => {
           model: User,
           attributes: ["name"],
         },
+        { model: Comment,
+          attributes: ["content", "user_id"]
+        }
       ],
     });
 
@@ -42,6 +45,22 @@ router.get("/blog/:id", withAuth, async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.post('/blog:id', async (req, res)=> {
+  const user_id = req.session.user_id;
+  try {
+    const commentData = await Comment.create(
+      {
+        content: req.body.content,
+        user_id: user_id,
+
+      }
+    );
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
@@ -62,6 +81,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("dashboard");
@@ -78,3 +98,8 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 module.exports = router;
+
+router.get("/logout", (req, res) => {
+
+
+})
