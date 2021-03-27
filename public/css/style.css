@@ -10,20 +10,38 @@ body {
   background-size: cover;
   height: 100%;
 }
+.text-center {
+  background-color: rgb(8, 236, 236);
+  opacity: .95;
+}
+#ind-blogs,
+#instructions,
+#home-welcome,
+#welcome,
+.blog-list
+{
+  background-color: rgb(160, 69, 250);
+
+}
+
 
 body {
   margin: 20px;
 }
 
+.btn-danger
+{
+  background-color: blue;
+}
 main {
   display: block;
 }
-
-/* h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-  color: aqua;
-} */
+#create-form,
+#create-form-card,
+header {
+  background-color: greenyellow;
+  opacity: 0.9;
+}
 
 hr {
   box-sizing: content-box;
@@ -33,6 +51,7 @@ hr {
   overflow: visible;
   /* 2 */
 }
+
 
 pre {
   font-family: monospace, monospace;

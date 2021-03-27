@@ -1,23 +1,22 @@
-<header>
-  <h1>Welcome to the Tech Blog!</h1>
-</header>
+
+<h1 class="text-center" id="home-welcome">Welcome to the Tech Blog!</h1>
+
 <main>
   <aside>
-    <h2>Enjoy the technology insights</h2>
+    <h2 class="text-center">**Enjoy the technology insights**</h2>
   </aside>
   {{#each blogs as |blog| }}
-  <div class="row mb-4 project">
-    <div class="col-md-5">
-      <h2>
-        <a href="/blog/{{blog.id}}">{{blog.name}}</a>
-      </h2>
-      <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
-    </div>
-    <div class="col-md-7">
-      <p>
-        {{blog.content}}
-      </p>
-    </div>
-    </div>
+  <div class="card text-center">
+  <div class="card-header">
+    <h2 class="card-title"><a href="/blog/{{blog.id}}">{{blog.name}}</a></h2>
+  </div>
+  <div class="card-body">
+    <p>Created by: {{blog.user.name}}</p>
+    <p class="card-text">{{blog.content}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    created on: {{format_date blog.date_created}}
+  </div>
+</div>
 
     {{/each }}

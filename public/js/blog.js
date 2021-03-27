@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
   
       if (response.ok) {
         document.location.append('/dashboard');
-        
+        window.location.reload();
         
 
 
@@ -23,7 +23,7 @@ const newFormHandler = async (event) => {
       }
 
     }
-    window.location.reload();
+    
   };
   
   const delButtonHandler = async (event) => {

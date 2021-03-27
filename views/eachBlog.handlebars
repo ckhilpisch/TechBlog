@@ -1,7 +1,7 @@
 <div class="viewBlog">
 <div class="card text-center">
   <div class="card-header">
-    By: {{{user.name}}}
+    By: {{{blog.user.user_name}}}
   </div>
   <div class="card-body">
     <h5 class="card-title"> {{{blog.name}}}</h5>
@@ -9,7 +9,7 @@
     <a href="/comment" class="btn btn-primary">Leave a Comment</a>
   </div>
   <div class="card-footer text-muted">
-    created: 
+    created: {{blog.dated_created}}
 </div>
 </div>
 {{#if comments.length}}

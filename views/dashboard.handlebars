@@ -1,19 +1,18 @@
 <div class="row">
   <div class="col-med-4"></div>
   <div class="col-med-8">
-    <h2>Welcome, {{name}}!</h2>
+    <h2 class="text-center" id="welcome">Welcome, {{name}}!</h2>
   </div>
   <div class="col-med-4"></div>
 </div>
 
 {{#if blogs.length}}
-<div class=row>
-<div class="col-med-4"></div>
-<div class="col-md-8 blog-list">
-  <h3>{{name}}'s Blogs:</h3>
-  <h5>**Click on a blog's title to go to the blog's page and read comments left by other users!**</h5>
-  <div class="col-md-4"></div>
-</div>
+<div class="row">
+  <div class="blog-list">
+    <h3 class="text-center" id="ind-blogs">Your Blogs:</h3>
+    <h5 class="text-center" id="instructions">**Click on a blog's title to go to the blog's page and read comments left
+      by other users!**</h5>
+  </div>
 </div>
 {{#each blogs as |blog|}}
 <div class="card text-center">
@@ -34,25 +33,23 @@
 {{/if}}
 </div>
 
-<div class="card text-center">
+<div class="card text-center" id="create-form">
   <div class="card-header" id="createBlog">
     Create a new Tech Blog!
   </div>
   <div class="card-body">
     <form class="form new-blog-form">
-      <div class="form-group">
-        <label for="blog-name">blog name:</label>
-        <input class="form-input" type="text" id="blog-name" name="blog-name" />
+      <div class="card text-center" id="create-form-card">
+        <label for="blog-name" class="sr-only">Blog name:</label>
+        <input type="text" id="blog-name" class="form-control" placeholder="Blog name" required autofocus>
+        <label for="blog-content" class="sr-only">Content:</label>
+        <input type="text" id="blog-content" class="form-input" placeholder="Content"required autofocus>
+        <br>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
       </div>
-     <div class="form-group">
-        <label for="blog-content">content:</label>
-        <textarea class="form-input" id="blog-content" name="blog-content"></textarea>
-      </div>
-    <button type="submit" class="btn btn-primary">CREATE</button>
-  </div>
-  <div class="card-footer text-muted">
-  </div>
-</div>
+    </form>
 
 
   </div>
