@@ -14,13 +14,16 @@ const newFormHandler = async (event) => {
   
       if (response.ok) {
         document.location.append('/dashboard');
-        window.location.reload();
+        
+        
 
 
       } else {
         alert('Failed to create project');
       }
+
     }
+    window.location.reload();
   };
   
   const delButtonHandler = async (event) => {
@@ -43,6 +46,7 @@ const newFormHandler = async (event) => {
   document
     .querySelector('.new-blog-form')
     .addEventListener('click', newFormHandler);
+    
   
   document
     .querySelector('.blog-list')

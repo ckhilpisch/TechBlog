@@ -1,21 +1,23 @@
 <div class="viewBlog">
-    <div class="viewHeader">
-    <h2 >{{blog.name}}</h2>
-    <h4>By: {{user.name}}</h4>
-   
-    </div>
-    <p>{{blog.content}}</p>
-    <p>created on: {{blog.date_created}}</p>
-    
-    
-    <div class="form" id="comment-form">
-        <label class="label userCommentLabel" for="userName">Leave a Comment: </label>
-    </div>
-    <div class="form">
-        <input class="input userComment" type="text">
-    </div>
-    <button id="commentBtn">Submit</button>
+<div class="card text-center">
+  <div class="card-header">
+    By: {{{user.name}}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> {{{blog.name}}}</h5>
+    <p class="card-text">{{{blog.content}}}</p>
+    <a href="/comment" class="btn btn-primary">Leave a Comment</a>
+  </div>
+  <div class="card-footer text-muted">
+    created: 
 </div>
-<div class="commentsDiv">
-    {{> comment}}
 </div>
+{{#if comments.length}}
+{{#each comments as |comment|}}
+
+{{> comment}}
+
+{{/each}}
+{{/if}}
+
+

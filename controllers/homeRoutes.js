@@ -26,15 +26,15 @@ router.get(["/","/home"], async (req, res) => {
 router.get("/blog/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ["name"],
-      //   },
-      //   // { model: Comment,
-      //   //   attributes: ["content", "user_id"]
-      //   // }
-      // ],
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+        // { model: Comment,
+        //   attributes: ["content", "user_id"]
+        // }
+      ],
     });
 
     const blog = blogData.get({ plain: true });
@@ -58,7 +58,12 @@ router.post('/blog:id', async (req, res)=> {
 
       }
     );
-    res.status(200).json(commentData);
+    const comment = commentData.get({ plain:true });
+    
+    res.render('eachBlog', {
+      ...comment,
+      logged_in: req.session.logged_in,
+    })
   } catch (err) {
     res.status(400).json(err);
   }
@@ -97,6 +102,7 @@ router.get("/signup", (req, res) => {
   }
   res.render("signup");
 });
+
 
 
 module.exports = router;
