@@ -2,6 +2,8 @@ const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
+
+// get the home page
 router.get(["/","/home"], async (req, res) => {
   try {
     const blogData = await Blog.findAll({
@@ -23,6 +25,7 @@ router.get(["/","/home"], async (req, res) => {
   }
 });
 
+// get an individual blog with all of comments associated sith it
 router.get("/blog/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -31,16 +34,29 @@ router.get("/blog/:id", withAuth, async (req, res) => {
           model: User,
           attributes: ["name"],
         },
-        { model: Comment,
-          attributes: ["content", "user_id"]
-        }
       ],
     });
 
     const blog = blogData.get({ plain: true });
+    const comment = await Comment.findAll(
+      {
+        where : {
+          blog_id: req.params.id,
+        },
+        include: [
+          {
+          model : User,
+          attributes: ["name"],
 
+          },
+        ]
+      }
+    );
+
+    const usercomments = commentData.map((usercomments) => usercomments.get({ plain: true}))
     res.render("eachBlog", {
-      ...blog,
+       blog,
+      usercomments,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -48,6 +64,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
   }
 });
 
+// create a comment for a blog
 router.post('/blog:id', async (req, res)=> {
   const user_id = req.session.user_id;
   try {
@@ -87,6 +104,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
+// login page - redirects to dashboard if already logged in
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("dashboard");
@@ -95,6 +113,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// sign up route
 router.get("/signup", (req, res) => {
   if (req.session.logged_in) {
     res.redirect("dashboard");

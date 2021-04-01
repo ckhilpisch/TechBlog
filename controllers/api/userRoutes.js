@@ -49,20 +49,25 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
+  console.log("incoming user data", req.body);
   try {
     const userData = await User.create({
-      user_name: req.body.user_name,
+      name: req.body.name,
+      email: req.body.email,
       password: req.body.password,
+     
     });
 
     req.session.save(() => {
-      req.session.user_name = userData.user_name;
       req.session.user_id = userData.id;
+      req.session.user_name = userData.name;
+      req.session.user_email = userData.email;
       req.session.loggedIn = true;
 
-      res.json({ user: userData, message: "You are now logged in!" });
+      res.json({ user: userData, message: "You are logged in!" });
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

@@ -11,44 +11,37 @@ const newFormHandler = async (event) => {
           'Content-Type': 'application/json',
         },
       });
-  
       if (response.ok) {
-        document.location.append('/dashboard');
+        alert("new post created!");
+        document.location.replace("/dashboard");
         window.location.reload();
-        
-
-
       } else {
         alert('Failed to create project');
       }
-
     }
-    
-  };
+ };
   
   const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
+    event.preventDefault();
       const id = event.target.getAttribute('data-id');
   
       const response = await fetch(`/api/blog/${id}`, {
         method: 'DELETE',
       });
-  
+   
       if (response.ok) {
+        alert("post deleted");
         document.location.replace('/dashboard');
       } else {
         alert('Failed to delete project');
       }
-    }
   };
 
 
   document
-    .querySelector('.new-blog-form')
-    .addEventListener('click', newFormHandler);
+    .querySelector('.new-blog-form').addEventListener('click', newFormHandler);
     
   
   document
-    .querySelector('.blog-list')
-    .addEventListener('click', delButtonHandler);
+    .querySelector('.blogs-list').addEventListener('click', delButtonHandler);
   
