@@ -5,13 +5,13 @@
 }
 
 body {
-  background-image: url('../photos/tech.jpeg');  
+  background-image: url('../photos/tech33.jpeg');  
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
 }
 .text-center {
-  background-color: rgb(8, 236, 236);
+  background-color: rgb(182, 182, 182);
   opacity: .95;
 }
 #ind-blogs,
@@ -20,7 +20,7 @@ body {
 #welcome,
 .blog-list
 {
-  background-color: rgb(160, 69, 250);
+  background-color:  rgb(182, 182, 182);
 
 }
 
@@ -39,7 +39,7 @@ main {
 #create-form,
 #create-form-card,
 header {
-  background-color: greenyellow;
+  background-color:  rgb(182, 182, 182);
   opacity: 0.9;
 }
 

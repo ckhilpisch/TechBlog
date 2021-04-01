@@ -52,7 +52,8 @@ router.post("/:id", async (req, res) => {
     const newComment = await Comment.create({
       text: req.body.content,
       blog_id: req.body.blog_id,
-      user_id: req.body.user_id,
+      user_id: req.body.userID,
+      date_created:req.body.date_created
     });
     res.status(200).json(newComment);
   } catch (err) {

@@ -15,12 +15,12 @@
   </div>
 </div>
 {{#each blogs as |blog|}}
-<div class="card text-center blogs-list">
+<div class="card text-center">
   <div class="card-header"></div>
   <div class="card-body blog-list">
     <h5 class="card-title"><a href="/blog/{{blog.id}}">{{blog.name}}</a></h5>
     <p class="card-text">{{blog.content}}</p>
-    <button class="btn btn-sm btn-danger" data-id={{blog.id}}>DELETE</button>
+    <button class="btn btn-sm btn-danger blogs-list" data-id={{blog.id}}>DELETE</button>
   </div>
   <div class="card-footer text-muted">
     created: {{format_date blog.date_created}}
