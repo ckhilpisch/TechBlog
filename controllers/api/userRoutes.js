@@ -52,29 +52,37 @@ router.post("/login", async (req, res) => {
 
 //creating a signup
 router.post("/signup", async (req, res) => {
-  console.log("incoming user data", req.body);
   try {
-    const userData = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-     
-    });
+    const userData = await User.findOne({ where: { email: req.body.email } });
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.user_name = userData.name;
-      req.session.user_email = userData.email;
-      req.session.loggedIn = true;
+    if (userData) {
+      res.status(400).json({ message: "Email already exists in our system" });
+      return;
+    } else if (!userData) {
 
-      res.json({ user: userData, message: "You are logged in!" });
-    });
+      
+      const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+      });
+      user.save().then((result) => {
+        console.log(result);
+        req.session.logged_in = true;
+        req.session.user_id = user.id;
+        req.session.name = user.name
+        console.log(user);
+        res.status(200).json({
+          message: "User created",
+        });
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
   }
 });
-
+//logout route
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
