@@ -1,32 +1,38 @@
-const comments = async (event) => {
+const commentsHandler = async (event) => {
     event.preventDefault();
     const id = event.target.getAttribute('data-id');
 
     // Trim and get the value on the comment.
-    const user_comment = document.querySelector('.userComment').value.trim();
-    var postBody = {
+    const user_comment = document.querySelector('.commentBtn').value.trim();
+    var comment = {
         user_comment: user_comment, 
-        post_id: id,
+        blog_id: id,
     }
     console.log(user_comment)
     // If comment exists, go to post.
     if (user_comment) {
-        const response = await fetch(`/home/${id}`,
+        const response = await fetch(`/blog/${id}`,
         {
             method: 'POST',
-            body: JSON.stringify(postBody),
+            body: JSON.stringify(comment),
             headers: { 'Content-Type': 'application/json' },
         });
 
         // If everything is ok, refresh page.
         if (response.ok) {
-            console.log('New Comment Created')
+            alert("New comment created");
             window.location.reload();
         }
         else {
-            console.log('Comment failed.')
+            sweetAlert.fire( {
+                title: "New comment not created",
+                // text: response.statusText,
+                icon: "warning"
+              })
         }
     }
 };
 
-document.querySelector('#commentBtn').addEventListener('click', comments);
+document.querySelectorAll(".commentBtn").forEach(function (element) {
+    element.addEventListener("click", commentsHandler);
+  });

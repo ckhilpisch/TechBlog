@@ -1,23 +1,28 @@
 <div class="viewBlog">
 <div class="card text-center">
   <div class="card-header">
-    By: {{{blog.user.user_name}}}
+    By: {{blog.user.name}}
   </div>
   <div class="card-body">
-    <h5 class="card-title"> {{{blog.name}}}</h5>
-    <p class="card-text">{{{blog.content}}}</p>
-    <a href="/comment" class="btn btn-primary">Leave a Comment</a>
+    <h5 class="card-title"> {{blog.name}}</h5>
+    <p class="card-text">{{blog.content}}</p>
+    <a href="/comment" class="btn btn-primary commentBtn">Leave a Comment</a>
   </div>
   <div class="card-footer text-muted">
-    created: {{blog.dated_created}}
+    created: {{format_date blog.date_created}}
 </div>
 </div>
 {{#if comments.length}}
 {{#each comments as |comment|}}
 
-{{> comment}}
+<div id="commentSection">
+    <p id="commentContent">{{comment.content}}</p>
+    <p id="user">By: {{comment.user.name}}</p>
+    <p id="update">Date: {{format_date date_created}}</p>
+</div>
 
 {{/each}}
 {{/if}}
 
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

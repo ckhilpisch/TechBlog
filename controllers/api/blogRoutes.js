@@ -17,49 +17,77 @@ router.post("/", withAuth, async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const blogData = await Blog.findOne({
-      where: {
-        id: req.params.id,
-      },
-      attributes: ["id", "name", "content", "date_created"],
+    const blogData = await Blog.findByPk(req.params.id, {
       include: [
-        { model: User, attributes: ["name"] },
+        {
+          model: User,
+          attributes: ["name", "id"],
+        },
+
         {
           model: Comment,
-          attributes: ["content", "user_id"],
+          attributes: ["content", "date_created", "user_id"],
           include: {
             model: User,
-            attributes: ["name"],
+            attributes: ["name", "id"],
           },
         },
       ],
     });
+
     if (!blogData) {
       res.status(404).json({
         message: "This blog does not exist",
       });
+
+      console.log("IDOSFDKSLFDKLSFKDLS", blogData);
       return;
     }
     res.status(200).json(blogData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.post("/:id", async (req, res) => {
-  const userID = req.session.user_id;
-  try {
-    const newComment = await Comment.create({
-      text: req.body.content,
-      blog_id: req.body.blog_id,
-      user_id: req.body.userID,
-      date_created:req.body.date_created
-    });
-    res.status(200).json(newComment);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get("/:id", async (req, res) => {
+//   try {
+//     const blogData = await Blog.findOne({
+//       where: {
+//         id: req.params.id,
+//       },
+//       attributes: ["id", "content", "name", "date_created"],
+//       include: [
+//         { model: User, attributes: ["name"] },
+//         {
+//           model: Comment,
+//           attributes: ["id", "content", "user_id", "blog_id", "date_created"],
+//           include: {
+//             model: User,
+//             attributes: ["name"],
+//           },
+//         },
+//       ],
+
+//     });
+
+//     if (!blogData) {
+//       res.status(404).json({
+//         message: "This blog does not exist",
+//       });
+
+//      console.log("IDOSFDKSLFDKLSFKDLS", blogData);
+//       return;
+
+//     }
+//     res.status(200).json(blogData);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
 
 router.delete("/:id", withAuth, async (req, res) => {
   try {

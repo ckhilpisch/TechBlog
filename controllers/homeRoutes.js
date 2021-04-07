@@ -53,9 +53,9 @@ router.get("/blog/:id", withAuth, async (req, res) => {
       }
     );
 
-    const usercomments = commentData.map((usercomments) => usercomments.get({ plain: true}))
+    const usercomments = comment.map((usercomments) => usercomments.get({ plain: true}))
     res.render("eachBlog", {
-       blog,
+      blog,
       usercomments,
       logged_in: req.session.logged_in,
     });
@@ -65,7 +65,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
 });
 
 // create a comment for a blog
-router.post('/blog:id', async (req, res)=> {
+router.post('/comment', async (req, res)=> {
   const user_id = req.session.user_id;
   try {
     const commentData = await Comment.create(
@@ -77,12 +77,19 @@ router.post('/blog:id', async (req, res)=> {
     );
     const comment = commentData.get({ plain:true });
     
-    res.render('eachBlog', {
+    res.render('eachblog', {
       ...comment,
       logged_in: req.session.logged_in,
     })
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.get("/comment", (req, res) => {
+  if (req.session.logged_in) {
+    res.render("comment")
+    return;
   }
 });
 

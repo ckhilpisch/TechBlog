@@ -1,14 +1,32 @@
 [
     {
       "name": "Javascript",
-      "content": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. Because of its versatility, I think Javascript is the best"
+      "content": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions.",
+      "user_id": 1
     },
     {
       "name": "JSON",
-      "content": "JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax. You'll come across it quite often, and it su a handy tool in web development"
+      "content": "JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax.",
+      "user_id": 1
     },
     {
       "name": "Node.js",
-      "content": "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools, and that's why i LOVE it."
+      "content": "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.",
+      "user_id": 2
+    },
+    {
+      "name": "MySQL",
+      "content": "MySQL  is an open-source relational database management system. SQL stands for Structured Query Language.",
+      "user_id": 2
+    },
+    {
+      "name": "Socket.io",
+      "content": "Socket.IO is a JavaScript library for realtime web applications. It enables realtime, bi-directional communication between web clients and servers.",
+      "user_id": 3
+    },
+    {
+      "name": "bcrypt",
+      "content": "Besides incorporating a salt to protect against rainbow table attacks, bcrypt is an adaptive function: over time, the iteration count can be increased to make it slower",
+      "user_id": 3
     }
   ]
