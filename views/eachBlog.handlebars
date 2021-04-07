@@ -6,14 +6,14 @@
   <div class="card-body">
     <h5 class="card-title"> {{blog.name}}</h5>
     <p class="card-text">{{blog.content}}</p>
-    <a href="/comment" class="btn btn-primary commentBtn">Leave a Comment</a>
+    <a href="/comment/{{blog.id}}" class="btn btn-primary commentBtn">Leave a Comment</a>
   </div>
   <div class="card-footer text-muted">
     created: {{format_date blog.date_created}}
 </div>
-</div>
+
 {{#if comments.length}}
-{{#each comments as |comment|}}
+{{#each comments as | comment|}}
 
 <div id="commentSection">
     <p id="commentContent">{{comment.content}}</p>
@@ -23,6 +23,6 @@
 
 {{/each}}
 {{/if}}
-
+</div>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

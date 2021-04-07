@@ -25,7 +25,7 @@ router.get(["/","/home"], async (req, res) => {
   }
 });
 
-// get an individual blog with all of comments associated sith it
+// individual blog with associated comments
 router.get("/blog/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -34,29 +34,19 @@ router.get("/blog/:id", withAuth, async (req, res) => {
           model: User,
           attributes: ["name"],
         },
+        {
+          model: Comment,
+          include: [{ model: User,
+          attributes: ["name"],
+          }],
+        },
       ],
     });
 
     const blog = blogData.get({ plain: true });
-    const comment = await Comment.findAll(
-      {
-        where : {
-          blog_id: req.params.id,
-        },
-        include: [
-          {
-          model : User,
-          attributes: ["name"],
-
-          },
-        ]
-      }
-    );
-
-    const usercomments = comment.map((usercomments) => usercomments.get({ plain: true}))
-    res.render("eachBlog", {
+    res.render("eachblog", {
       blog,
-      usercomments,
+      comments: blog.comments,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -64,35 +54,14 @@ router.get("/blog/:id", withAuth, async (req, res) => {
   }
 });
 
-// create a comment for a blog
-router.post('/comment', async (req, res)=> {
-  const user_id = req.session.user_id;
-  try {
-    const commentData = await Comment.create(
-      {
-        content: req.body.content,
-        user_id: user_id,
-
-      }
-    );
-    const comment = commentData.get({ plain:true });
-    
-    res.render('eachblog', {
-      ...comment,
-      logged_in: req.session.logged_in,
-    })
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.get("/comment", (req, res) => {
+//get the comments
+router.get("/comment/:id", (req, res) => {
   if (req.session.logged_in) {
-    res.render("comment")
+    res.render("comment", {id:req.params.id})
     return;
   }
 });
-
+//get the dashboard with all of the logged in users blogs
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {

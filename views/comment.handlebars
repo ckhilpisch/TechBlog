@@ -7,7 +7,7 @@
     <form class="form new-comment-form">
       <div class="card text-center" id="create-comment-card">
         <label for="comment-content" class="sr-only">Comment:</label>
-        <input type="text" id="comment-content" class="form-input" placeholder="Content"required autofocus>
+        <input type="text" id="comment-content" data-id="{{id}}" class="form-input" placeholder="Content"required autofocus>
         <br>
         <br>
         <button class="btn btn-lg btn-primary btn-block" "commentBtn" type="submit">Add</button>
@@ -18,3 +18,5 @@
 
   </div>
 </div>
+
+<script src="/js/comment.js"></script>
