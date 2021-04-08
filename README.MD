@@ -55,6 +55,7 @@ The user can:
 ## Here is the Heroku App:
 
 ## Here is the Github:
+https://github.com/ckhilpisch/TechBlog
 
 ### This is the site in action:
 
