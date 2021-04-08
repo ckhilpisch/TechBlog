@@ -21,7 +21,10 @@ body {
   width: 360;
   background-color: rgb(21, 21, 21);
   opacity: 0.9;
+  display: flex;
+  flex-wrap: wrap;
 }
+
 span {
   background-color: rgb(21, 21, 21);
   opacity: 0.9;
