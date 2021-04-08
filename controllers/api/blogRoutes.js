@@ -40,8 +40,6 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({
         message: "This blog does not exist",
       });
-
-      console.log("IDOSFDKSLFDKLSFKDLS", blogData);
       return;
     }
     res.status(200).json(blogData);

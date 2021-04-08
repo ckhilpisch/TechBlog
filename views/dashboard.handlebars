@@ -1,14 +1,12 @@
 <div class="row">
-  <div class="col-med-4"></div>
-  <div class="col-med-8">
+  <div class="col">
     <h2 class="text-center" id="welcome"><span>Welcome, {{name}}!</span></h2>
   </div>
-  <div class="col-med-4"></div>
 </div>
 
 {{#if blogs.length}}
 <div class="row">
-  <div class="blog-list">
+  <div class="blog-list col">
     <h3 class="text-center" id="ind-blogs"><span>Your Blogs:</span></h3>
     <h5 class="text-center" id="instructions"><span>**Click on a blog's title to go to its page and read other user's
         comments!**</span></h5>
@@ -25,31 +23,33 @@
   <div class="card-footer text-muted">
     Created On: {{format_date blog.date_created}}
   </div>
-</div>
-{{/each}}
-</div>
+  {{/each}}
+
 {{/if}}
 </div>
 
-<div class="card text-center" id="create-form">
-  <div class="card-header" id="createBlog">
-    Create a new Tech Blog!
-  </div>
-  <div class="card-body">
-    <form class="form new-blog-form">
-      <div class="card text-center" id="create-form-card">
-        <label for="blog-name" class="sr-only">Blog name:</label>
-        <input type="text" id="blog-name" class="form-control" placeholder="Blog name" required autofocus>
-        <label for="blog-content" class="sr-only">Content:</label>
-        <input type="text" id="blog-content" class="form-input" placeholder="Content" required autofocus>
-        <br>
-        <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+<div class="row">
+  <div class="col">
+    <div class="card text-center" id="create-form">
+      <div class="card-header" id="createBlog">
+        <h3>Create a new Tech Blog!</h3>
+      </div>
+      <div class="card-body">
+        <form class="form new-blog-form">
+          <div class="card text-center" id="create-form-card">
+            <label for="blog-name" class="sr-only">Blog name:</label>
+            <input type="text" id="blog-name" class="form-control" placeholder="Blog name" required autofocus>
+            <label for="blog-content" class="sr-only">Content:</label>
+            <input type="text" id="blog-content" class="form-input" placeholder="Content" required autofocus>
+            <br>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
+          </div>
+        </form>
 
       </div>
-    </form>
-
-
+    </div>
   </div>
 </div>
 

@@ -3,6 +3,7 @@
   margin: 20px;
   padding: 10px;
   color: aqua;
+  font-family: 'Lexend', sans-serif;
 }
 
 body {
@@ -17,12 +18,13 @@ body {
   color: black;
 }
 .card {
+  width: 360;
   background-color: rgb(21, 21, 21);
-  opacity: 0.95;
+  opacity: 0.9;
 }
 span {
   background-color: rgb(21, 21, 21);
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
 #commentHeader {
@@ -65,11 +67,32 @@ pre {
 }
 
 a {
-  background-color: transparent;
+  background-color: rgb(21, 21, 21);
+  opacity: 0.9;
+  font-weight: bold;
 }
 
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   text-decoration: underline dotted;
+}
+
+/* @media screen and (max-width: 600px) {
+	.col {
+    display: block;
+    width: 100%;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.col {
+    display: block;
+    width: 100%;
+	}
+} */
+@media (max-width: 360px) {
+  .row {   
+    flex-direction: column;
+  }
 }
