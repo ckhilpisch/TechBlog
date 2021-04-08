@@ -2,9 +2,8 @@ const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-
 // get the home page
-router.get(["/","/home"], async (req, res) => {
+router.get(["/", "/home"], async (req, res) => {
   try {
     const blogData = await Blog.findAll({
       include: [
@@ -36,9 +35,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          include: [{ model: User,
-          attributes: ["name"],
-          }],
+          include: [{ model: User, attributes: ["name"] }],
         },
       ],
     });
@@ -57,7 +54,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
 //get the comments
 router.get("/comment/:id", (req, res) => {
   if (req.session.logged_in) {
-    res.render("comment", {id:req.params.id})
+    res.render("comment", { id: req.params.id });
     return;
   }
 });
@@ -98,7 +95,4 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-
-
 module.exports = router;
-

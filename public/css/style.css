@@ -2,44 +2,46 @@
   box-sizing: border-box;
   margin: 20px;
   padding: 10px;
+  color: aqua;
 }
 
 body {
-  background-image: url('../photos/tech33.jpeg');  
+  background-image: url("../photos/tech33.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
 }
-.text-center {
-  background-color: rgb(182, 182, 182);
-  opacity: .95;
-}
-#ind-blogs,
-#instructions,
-#home-welcome,
-#welcome,
-.blog-list
-{
-  background-color:  rgb(182, 182, 182);
 
+#blog-content,
+#comment-content {
+  color: black;
+}
+.card {
+  background-color: rgb(21, 21, 21);
+  opacity: 0.95;
+}
+span {
+  background-color: rgb(21, 21, 21);
+  opacity: 0.95;
 }
 
+#commentHeader {
+  text-decoration: underline;
+}
 
 body {
   margin: 20px;
 }
 
-.btn-danger
-{
+.btn-danger {
   background-color: blue;
 }
 main {
   display: block;
 }
 #create-form,
-#create-form-card,
-header {
-  background-color:  rgb(182, 182, 182);
+#create-form-card {
+  background-color: rgb(21, 21, 21);
   opacity: 0.9;
 }
 
@@ -52,7 +54,9 @@ hr {
   /* 2 */
 }
 
-
+#logout {
+  color: black;
+}
 pre {
   font-family: monospace, monospace;
   /* 1 */
@@ -68,7 +72,4 @@ abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   text-decoration: underline dotted;
- 
 }
-
-

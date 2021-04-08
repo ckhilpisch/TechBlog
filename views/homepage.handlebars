@@ -1,22 +1,21 @@
-
-<h1 class="text-center" id="home-welcome">Welcome to the Tech Blog!</h1>
+<h1 class="text-center" id="home-welcome"><span>Welcome to the Tech Blog!</span></h1>
 
 <main>
   <aside>
-    <h2 class="text-center">**Enjoy the technology insights**</h2>
+    <h2 class="text-center"><span>**Enjoy the technology insights**</span></h2>
   </aside>
   {{#each blogs as |blog| }}
   <div class="card text-center">
-  <div class="card-header">
-    <h2 class="card-title"><a href="/blog/{{blog.id}}">{{blog.name}}</a></h2>
+    <div class="card-header">
+      <h2 class="card-title"><a href="/blog/{{blog.id}}">{{blog.name}}</a></h2>
+    </div>
+    <div class="card-body">
+      <p>Created by: {{blog.user.name}}</p>
+      <p class="card-text">{{blog.content}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      Created On: {{format_date blog.date_created}}
+    </div>
   </div>
-  <div class="card-body">
-    <p>Created by: {{blog.user.name}}</p>
-    <p class="card-text">{{blog.content}}</p>
-  </div>
-  <div class="card-footer text-muted">
-    created on: {{format_date blog.date_created}}
-  </div>
-</div>
 
-    {{/each }}
+  {{/each }}
