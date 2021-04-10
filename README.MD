@@ -6,22 +6,20 @@
 
 
 ## <div align="center"> Table of Contents : </div>
-<ul>
-<li><a href="#description">Description</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#testing">Testing</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#questions">Questions</a></li>
-<li><a href="#license">License</a></li>
-</ul>
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Visuals](#visuals)
+* [Contributing](#contributing)
+* [Questions](#questions)
+* [License](#license)
 
-## <div align="center"> Description : </div>
+## <div align ='center'> <a name="description"> **Description** : </a></div> 
 Tasked with creating a Tech Blog website that users can interface with that makes it easy for the user to view and interact with information stored in a blog website. I was challenged with architecting  and building a website where developers can publish their blog posts and comment on other developers’ posts as well.  I employeed the MVC paradigm in the architectural structure, while utilizing handlebars as the HTML templating language, with Sequelize as the ORM and the express-session npm package for authentication.
 
 
 
-## <div align="center"> Installation : </div>
+## <div align="center"> <a name="installation"> **Installation** : </a></div>
 The application can be run via the heroku app link provided.  
 It can also be accessed locally, by running it in your terminal.   
 In order to run locally, use the following command to run the installation packages:
@@ -41,7 +39,7 @@ The application is also connected with a mySQL workbench, where there are three 
 
 
 
-## <div align="center"> Usage : </div> 
+## <div align="center"><a name="usage"> **Usage** :</a></div>
 The user will open the command terminal inside the chosen coding platform.  The user will then run node server.js inside the command line.   The terminal then connects to the localhost:3001 url.   Otherwise use the heroku.app link for this application at:
 
 
@@ -65,6 +63,7 @@ https://techblog1.herokuapp.com/
 ### <div align="center"> Here is the Github : </div>
 https://github.com/ckhilpisch/TechBlog
 
+## <div align="center"><a name="visuals"> **Visuals** :</a></div>
 ### <div align="center"> This is the site in action : </div>
 <br>
 
@@ -78,10 +77,10 @@ https://github.com/ckhilpisch/TechBlog
 ![homepage PNG](./public/photos/Blog.png)
 
 
-## <div align="center"> Testing : </div>
+## <div align="center"><a name="testing"> **Testing** :</a></div>
 N/A
 
-## <div align="center"> Contributing : </div>
+## <div align="center"><a name="contributing"> **Contributing** :</a></div>
 
 Pull requests are always welcome.  When contributing to this repository, please first discuss the change you wish to make via email or issue.  
 After approval, please follow the "fork-and-pull" Git workflow.
@@ -93,11 +92,12 @@ After approval, please follow the "fork-and-pull" Git workflow.
 <li>Submit a Pull request so that we can review your changes</li>
 </ol>
 
-## <div align="center"> Questions : </div>
+## <div align="center"><a name="questions"> **Questions** :</a></div>
+
 
 If you have any questions, feel free to reach out to me.   My email is ckhilpisch@gmail.com.
 
-## <div align="center"> License : </div>
+## <div align ='center'> <a name="license"> **License** : </a></div> 
 
 MIT License
 Informataion avaiable here: 
