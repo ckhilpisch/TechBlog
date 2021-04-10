@@ -1,44 +1,36 @@
 <div class="col">
-    <h2 class="text-center" id="welcome"><span>Welcome, {{name}}!</span></h2>
-  </div>
+  <h2 class="text-center" id="welcome"><span>Welcome, {{name}}!</span></h2>
+</div>
 </div>
 
-
 <div class="row">
-  <div class="col-xs-0 col-sm-0 col-md-3 col-lg-4 col-xl-4"></div>
-  <div class=" blog-list col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+  <div class=" blog-list col">
     <h3 class="text-center" id="ind-blogs"><span>Your Blogs:</span></h3>
     <h5 class="text-center" id="instructions"><span>**Click on a blog's title to go to its page and read other user's
         comments!**</span></h5>
   </div>
-  <div class="col-xs-0 col-sm-0 col-md-3 col-lg-4 col-xl-4"></div>
+  \
 </div>
+<div class="row">
 {{#if blogs.length}}
 {{#each blogs as |blog|}}
-<div class="row">
-   <div class="col-xs-0 col-sm-0 col-md-3 col-lg-4 col-xl-4"></div>
-  <div class=" blog-list col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-<div class="card text-center" class="card">
-  <div class="card-header"></div>
-  <div class="card-body blog-list">
-    <h5 class="card-title"><a href="/blog/{{blog.id}}">{{blog.name}}</a></h5>
-    <p class="card-text">{{blog.content}}</p>
-    <button class="btn btn-sm btn-danger blogs-list" data-id={{blog.id}}>DELETE</button>
+    <div class="card text-center" class="card">
+      <div class="card-header"></div>
+      <div class="card-body blog-list">
+        <h5 class="card-title"><a href="/blog/{{blog.id}}">{{blog.name}}</a></h5>
+        <p class="card-text">{{blog.content}}</p>
+        <button class="btn btn-sm btn-danger blogs-list" data-id={{blog.id}}>DELETE</button>
+      </div>
+      <div class="card-footer text-muted">
+        Created On: {{format_date blog.date_created}}
+      </div>
+      {{/each}}
+    </div>
   </div>
-  <div class="card-footer text-muted">
-    Created On: {{format_date blog.date_created}}
-  </div>
-  {{/each}}
+  {{/if}}
 
-{{/if}}
-</div>
-</div>
-<div class="col-xs-0 col-sm-0 col-md-3 col-lg-4 col-xl-4"></div>
-</div>
 
-<div class="row">
-  <div class="col-xs-0 col-sm-0 col-md-3 col-lg-4 col-xl-4"></div>
-  <div class=" blog-list col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+  <div class=" blog-list col">
     <div class="card text-center" id="create-form">
       <div class="card-header" id="createBlog">
         <h3>Create a new Tech Blog!</h3>
@@ -60,8 +52,8 @@
       </div>
     </div>
   </div>
-  <div class="col-xs-0 col-sm-0 col-md-3 col-lg-4 col-xl-4"></div>
-  </div>
+  
 
+</div>
 
 <script src="/js/blog.js"></script>
